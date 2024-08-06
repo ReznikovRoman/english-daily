@@ -10,8 +10,9 @@ services:
       - $ENV
     environment:
       - C_FORCE_ROOT=1
-    expose:
-      - $ED_SERVER_PORT
+      - ED_SERVER_HOSTS=http://0.0.0.0:$ED_SERVER_PORT
+    ports:
+      - $ED_SERVER_PORT:$ED_SERVER_PORT
     volumes:
       - .:/app
     command: >
