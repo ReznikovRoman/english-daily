@@ -1,0 +1,37 @@
+version: '3.9'
+
+services:
+  server:
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - $ENV
+    environment:
+      - C_FORCE_ROOT=1
+    expose:
+      - $ED_SERVER_PORT
+    volumes:
+      - .:/app
+    command: >
+      sh -c "cd /app/src
+      && python -m uvicorn english_daily.main:create_app --factory --reload --host 0.0.0.0 --port $ED_SERVER_PORT"
+    depends_on:
+      redis-primary:
+        condition: service_healthy
+
+  redis-primary:
+    image: redis/redis-stack:7.4.0-rc2
+    ports:
+      - "13334:8001"
+    volumes:
+      - redis_primary_data:/data
+    healthcheck:
+      test: redis-cli -p 6379 ping || exit 1
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  redis_primary_data:

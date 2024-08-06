@@ -1,0 +1,50 @@
+default_language_version:
+  python: "3.11"
+repos:
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v4.6.0
+  hooks:
+    - id: check-ast
+    - id: check-case-conflict
+    - id: check-merge-conflict
+    - id: check-toml
+    - id: debug-statements
+    - id: end-of-file-fixer
+    - id: mixed-line-ending
+    - id: trailing-whitespace
+- repo: https://github.com/charliermarsh/ruff-pre-commit
+  rev: "v0.5.5"
+  hooks:
+    - id: ruff
+      args: [ "--fix" ]
+- repo: https://github.com/pycqa/isort
+  rev: "5.12.0"
+  hooks:
+    - id: isort
+      name: Run isort
+      alias: isort .
+- repo: https://github.com/pre-commit/mirrors-mypy
+  rev: "v1.11.1"
+  hooks:
+    - id: mypy
+      name: Run mypy
+      args: [--config=./pyproject.toml, --ignore-missing-imports]
+      additional_dependencies:
+        [
+          dependency_injector,
+          aws_lambda_powertools,
+          brotli,
+          click,
+          pydantic,
+          pytest,
+          pytest-lazy-fixture,
+          pytest-mock,
+          python-dotenv,
+          types-freezegun,
+          types-redis,
+          uvicorn,
+          ipython,
+          fastapi,
+          pydantic,
+          pydantic_settings,
+        ]
