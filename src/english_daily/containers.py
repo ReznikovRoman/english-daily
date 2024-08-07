@@ -2,6 +2,7 @@ from dependency_injector import containers, providers
 
 from english_daily.core.config import get_settings
 from english_daily.core.logging import configure_logger
+from english_daily.domain import transcirpts
 
 settings = get_settings()
 
@@ -20,6 +21,14 @@ class Container(containers.DeclarativeContainer):
     config.from_dict(json_config)
 
     logging = providers.Resource(configure_logger)
+
+    # Domain -> Transcripts
+    transcript_visual_formatter = providers.Factory(transcirpts.VisualTextFormatter)
+
+    transcript_service = providers.Singleton(
+        transcirpts.TranscriptService,
+        formatter=transcript_visual_formatter,
+    )
 
 
 def override_providers(container: Container) -> Container:

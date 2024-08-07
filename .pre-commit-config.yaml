@@ -1,5 +1,5 @@
 default_language_version:
-  python: "3.11"
+  python: "3.12"
 repos:
 - repo: https://github.com/pre-commit/pre-commit-hooks
   rev: v4.6.0
@@ -28,10 +28,10 @@ repos:
   hooks:
     - id: mypy
       name: Run mypy
-      args: [--config=./pyproject.toml, --ignore-missing-imports]
+      args: [--config=./pyproject.toml, --ignore-missing-imports, --enable-incomplete-feature=NewGenericSyntax]
       additional_dependencies:
         [
-          dependency_injector,
+          dependency-injector-fork,
           aws_lambda_powertools,
           brotli,
           click,
