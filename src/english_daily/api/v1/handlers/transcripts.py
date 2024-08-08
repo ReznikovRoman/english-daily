@@ -16,7 +16,7 @@ router = APIRouter(tags=["Transcripts"])
 
 @router.get(
     path="/transcripts/{video_id}",
-    summary="Получение транскрипта видео",
+    summary="Get video transcript",
 )
 @inject
 async def get_transcript(

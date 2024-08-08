@@ -8,7 +8,7 @@ settings = get_settings()
 
 
 class Container(containers.DeclarativeContainer):
-    """Контейнер с зависимостями."""
+    """DI container."""
 
     wiring_config = containers.WiringConfiguration(
         packages=[
@@ -32,11 +32,11 @@ class Container(containers.DeclarativeContainer):
 
 
 def override_providers(container: Container) -> Container:
-    """Перезаписывание провайдеров с помощью стабов."""
+    """Override providers with stubs."""
     if not container.config.USE_STUBS():
         return container
     return container
 
 
 async def dummy_resource() -> None:
-    """Функция-ресурс для перезаписи в DI контейнере."""
+    """Dummy async resource for overriding providers in DI containers."""

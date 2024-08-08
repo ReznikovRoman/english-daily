@@ -15,6 +15,8 @@ if TYPE_CHECKING:
 
 
 class TranscriptService:
+    """Transcript service."""
+
     def __init__(self, formatter: Formatter) -> None:
         self._formatter = formatter
 

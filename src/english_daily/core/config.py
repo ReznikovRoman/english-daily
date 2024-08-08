@@ -5,7 +5,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
-    """Настройки проекта."""
+    """Project settings."""
 
     model_config = SettingsConfigDict(env_prefix="ED_", case_sensitive=True)
 

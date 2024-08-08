@@ -2,7 +2,7 @@ from http import HTTPStatus
 
 
 class APIErrorMixin:
-    """Миксин для ошибки REST API."""
+    """REST API error mixin."""
 
     message: str
     code: str
@@ -27,15 +27,15 @@ class APIErrorMixin:
 
 
 class BaseEnglishDailyError(Exception):
-    """Базовая ошибка сервиса."""
+    """Base service error."""
 
 
 class EnglishDailyError(APIErrorMixin, BaseEnglishDailyError):
-    """Ошибка сервиса English Daily."""
+    """English Daily service error."""
 
 
 class NotFoundError(EnglishDailyError):
-    """Ресурс не найден."""
+    """Resource not found."""
 
     message = "Resource not found"
     code = "not_found"
@@ -43,7 +43,7 @@ class NotFoundError(EnglishDailyError):
 
 
 class ConflictError(EnglishDailyError):
-    """Конфликт между существующими ресурсами."""
+    """Resource conflict."""
 
     message = "Resource cannot be processed"
     code = "resource_conflict"
@@ -51,7 +51,7 @@ class ConflictError(EnglishDailyError):
 
 
 class ImproperlyConfiguredError(EnglishDailyError):
-    """Неверная конфигурация."""
+    """Improperly configured service."""
 
     message = "Improperly configured service"
     code = "improperly_configured"
@@ -59,7 +59,7 @@ class ImproperlyConfiguredError(EnglishDailyError):
 
 
 class AuthorizationError(EnglishDailyError):
-    """Ошибка при авторизации."""
+    """Authorization error."""
 
     message = "Authorization error"
     code = "authorization_error"
@@ -67,7 +67,7 @@ class AuthorizationError(EnglishDailyError):
 
 
 class RequiredHeaderMissingError(EnglishDailyError):
-    """Отсутствует обязательный заголовок в запросе."""
+    """Required header is missing in Headers."""
 
     message = "Required header is missing"
     code = "missing_header"

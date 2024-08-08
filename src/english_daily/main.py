@@ -18,7 +18,7 @@ settings = get_settings()
 
 
 def create_app() -> FastAPI:
-    """Фабрика по созданию приложения FastAPI."""
+    """FastAPI app factory."""
     container = Container()
     json_config = settings.model_dump(mode="json")
     container.config.from_dict(json_config)
@@ -35,7 +35,7 @@ def create_app() -> FastAPI:
 
     app = FastAPI(
         title="English Daily API v1",
-        description="АПИ сервиса English Daily.",
+        description="English Daily API.",
         servers=[
             {"url": server_host}
             for server_host in settings.SERVER_HOSTS

@@ -12,6 +12,8 @@ P = ParamSpec("P")
 
 
 class VisualTextFormatter(TextFormatter):  # type: ignore[misc]
+    """Visual text formatter."""
+
     def format_transcript(self, transcript: list[TranscriptSequence], *args: P.args, **kwargs: P.kwargs) -> str:
         cleaned_transcript = (
             line["text"].replace("\n", " ")
