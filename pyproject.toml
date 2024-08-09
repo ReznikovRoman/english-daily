@@ -37,10 +37,12 @@ known_first_party = ["english_daily"]
 sections = ["FUTURE", "STDLIB", "THIRDPARTY", "FASTAPI", "FIRSTPARTY", "LOCALFOLDER"]
 
 [tool.ruff]
-target-version = "py311"
+target-version = "py312"
 line-length = 120
 src = ["src"]
 exclude = ["venv*"]
+
+[tool.ruff.lint]
 select = [
     "A", # flake8-builtins
     "B", # flake8-bugbear
@@ -92,25 +94,23 @@ ignore = [
 
 [tool.ruff.lint.per-file-ignores]
 "config.py" = ["N805"]
+"**schemas.py" = ["A003"]
 
-[tool.ruff.pydocstyle]
+[tool.ruff.lint.pydocstyle]
 convention = "google"
 
-[tool.ruff.mccabe]
+[tool.ruff.lint.mccabe]
 max-complexity = 12
 
-[tool.ruff.pep8-naming]
+[tool.ruff.lint.pep8-naming]
 classmethod-decorators = [
     "classmethod",
     "pydantic.validator",
     "pydantic.root_validator",
 ]
 
-[tool.ruff.isort]
+[tool.ruff.lint.isort]
 known-first-party = ["english_daily"]
 
-[tool.ruff.flake8-bugbear]
+[tool.ruff.lint.flake8-bugbear]
 extend-immutable-calls = ["fastapi.Depends", "fastapi.params.Depends", "fastapi.Query", "fastapi.params.Query"]
-
-[tool.ruff.per-file-ignores]
-"**schemas.py" = ["A003"]
