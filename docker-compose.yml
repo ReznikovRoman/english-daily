@@ -23,7 +23,7 @@ services:
         condition: service_healthy
 
   redis-primary:
-    image: redis/redis-stack:7.4.0-rc2
+    image: redis/redis-stack:7.4.0-v8
     ports:
       - "13334:8001"
     volumes:

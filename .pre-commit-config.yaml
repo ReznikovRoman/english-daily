@@ -1,8 +1,8 @@
 default_language_version:
-  python: "3.12"
+  python: "3.13"
 repos:
 - repo: https://github.com/pre-commit/pre-commit-hooks
-  rev: v4.6.0
+  rev: v6.0.0
   hooks:
     - id: check-ast
     - id: check-case-conflict
@@ -13,18 +13,18 @@ repos:
     - id: mixed-line-ending
     - id: trailing-whitespace
 - repo: https://github.com/charliermarsh/ruff-pre-commit
-  rev: "v0.5.5"
+  rev: "v0.15.6"
   hooks:
     - id: ruff
       args: [ "--fix" ]
 - repo: https://github.com/pycqa/isort
-  rev: "5.12.0"
+  rev: "8.0.1"
   hooks:
     - id: isort
       name: Run isort
       alias: isort .
 - repo: https://github.com/pre-commit/mirrors-mypy
-  rev: "v1.11.1"
+  rev: "v1.19.1"
   hooks:
     - id: mypy
       name: Run mypy

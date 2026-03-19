@@ -37,7 +37,7 @@ known_first_party = ["english_daily"]
 sections = ["FUTURE", "STDLIB", "THIRDPARTY", "FASTAPI", "FIRSTPARTY", "LOCALFOLDER"]
 
 [tool.ruff]
-target-version = "py312"
+target-version = "py313"
 line-length = 120
 src = ["src"]
 exclude = ["venv*"]
