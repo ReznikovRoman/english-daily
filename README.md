@@ -1,5 +1,4 @@
 # English Daily
-... \# TODO: add description
 
 ## Stack
 [RabbitMQ](https://www.rabbitmq.com/), [Redis](https://redis.io/), [AWS SNS](https://aws.amazon.com/sns/)
